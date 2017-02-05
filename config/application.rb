@@ -26,11 +26,11 @@ module TheDrawingGameApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    # Cors stuff to expose endpoints we nee
-    config.middleware.insert_before 0, "Rack::Cors" do
+    # Cors stuff to expose endpoints we need
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
     config.middleware.use Rack::Attack
